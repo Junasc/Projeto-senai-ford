@@ -1,0 +1,7 @@
+#logo {
+    margin: 2% 0% 8% 0%;
+    padding-right: 20%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
