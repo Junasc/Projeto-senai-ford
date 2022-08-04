@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pagina-intro',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaIntroComponent implements OnInit {
 
-  constructor() {}
+  constructor( private router:Router) {}
+
+  goDashboard(){
+    this.router.navigate(['/src/app/dashboard']);
+  }
 
   ngOnInit(): void {
   }

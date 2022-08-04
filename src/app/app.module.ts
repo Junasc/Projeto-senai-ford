@@ -5,9 +5,10 @@ import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent, DashboardComponent,],
   imports: [BrowserModule,AppRoutingModule,HttpClientModule,],
   providers: [{provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent]

@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'pagina-intro' ,
     loadChildren: ()=> import('./pagina-intro/pagina-intro.module').then((m)=>m.PaginaIntroModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: ()=> import('./dashboard/dashboard.module').then((m)=>m.DashboardModule)
   }
 ];
 
