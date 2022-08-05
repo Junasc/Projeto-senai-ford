@@ -5,7 +5,7 @@ import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from '../app/pagina-intro/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent,],

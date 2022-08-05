@@ -1,4 +1,4 @@
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import { DashboardComponent } from './../pagina-intro/dashboard/dashboard.component';
 import { HomeComponent } from './../home/home.component';
 import { PaginaIntroComponent } from './pagina-intro.component';
 import { NgModule, Component } from '@angular/core';
