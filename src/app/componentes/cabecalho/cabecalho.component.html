@@ -1,11 +1,10 @@
-<header>
+<header *ngIf="router.url !== '/home'">
     <!-- Navbar -->
     <nav class="navbar bg-light fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
+        <span class="navbar-toggler-icon"></span>
+      </button>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
@@ -28,22 +27,19 @@
                 </div>
             </div>
             <!-- dropdown usuario -->
-            <nav class="navbar navbar-light bg-white">
-                <a class="navbar-brand"></a>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/img/iconeUser.png" alt="icone de usuario" width="25px">
+            </button>
                 <div *ngIf="user$">
-                    <div *ngIf="user$.source._value.name; else login">
-                        <i class="fa fa-user-circle mr-1"></i>
-                        <a class="mr-1">{{user$.source._value.name}}</a>
-                        <a (click)="logout()">Logout</a>
-                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" *ngIf="user$.source._value.name; else login">
+                        <li class="listaUser"><a>{{user$.source._value.name}}</a></li>
+                        <li class="listaUser"><a (click)="logout()">Logout</a></li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
         </div>
     </nav>
-
     <ng-template #login>
-        <span class="navbar-text">
-      <a [routerLink]="['']"> Login</a>
-    </span>
     </ng-template>
-</header>header
+</header>
