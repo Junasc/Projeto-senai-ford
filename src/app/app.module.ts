@@ -1,3 +1,5 @@
+import { CabecalhoModule } from './componentes/cabecalho/cabecalho.module';
+import { RodapeModule } from './componentes/rodape/rodape.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID } from '@angular/core';
@@ -9,7 +11,7 @@ import { DashboardComponent } from '../app/pagina-intro/dashboard/dashboard.comp
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent,],
-  imports: [BrowserModule,AppRoutingModule,HttpClientModule,],
+  imports: [BrowserModule,AppRoutingModule,HttpClientModule, CabecalhoModule, RodapeModule ],
   providers: [{provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent]
 })
