@@ -1,12 +1,12 @@
-import { DashboardComponent } from './../pages/dashboard/dashboard.component';
-import { PaginaIntroComponent } from './pagina-intro.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: PaginaIntroComponent,
+    component: HomeComponent,
   children: [
     {
       path: '',
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PaginaIntroRoutingModule { }
+export class HomeRoutingModule { }

@@ -5,15 +5,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
+    redirectTo: 'login',
   },
   {
-    path: 'home',
+    path: 'login',
     loadChildren: ()=> import ('./home/home.module').then((m)=> m.HomeModule),
   },
   {
-    path: 'pagina-intro' ,
-    loadChildren: ()=> import('./pagina-intro/pagina-intro.module').then((m)=>m.PaginaIntroModule)
+    path: 'home' ,
+    loadChildren: ()=> import('./pages/home/home.module').then((m)=>m.HomeModule)
   },
   {
     path: 'dashboard',

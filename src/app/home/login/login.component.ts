@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
       () => {
-        this.router.navigate(['pagina-intro']);
+        this.router.navigate(['home']);
       },
       (error) => {
         alert('usuário ou senha inválido.');
