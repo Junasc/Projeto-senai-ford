@@ -1,7 +1,6 @@
-import { DashboardComponent } from './../pagina-intro/dashboard/dashboard.component';
-import { HomeComponent } from './../home/home.component';
+import { DashboardComponent } from './../pages/dashboard/dashboard.component';
 import { PaginaIntroComponent } from './pagina-intro.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [

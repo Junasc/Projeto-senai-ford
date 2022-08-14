@@ -12,7 +12,7 @@ export class PaginaIntroComponent implements OnInit {
   constructor( private router:Router) {}
 
   goDashboard(){
-    this.router.navigate(['/src/app/dashboard']);
+    this.router.navigate(['/src/app/pages/dashboard']);
   }
 
   ngOnInit(): void {
