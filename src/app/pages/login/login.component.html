@@ -1,0 +1,38 @@
+<div id="logo"><img src="assets/img/ford.png" alt="Logo da ford" width="150px"></div>
+<div id="login-container" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img id="ranger" src="assets/img/ranger.png" alt="Imagem de bronco sport" width="500px">
+        </div>
+        <div class="col-md-6">
+            <h2>Bem-Vindo!</h2>
+            <!-- form -->
+            <form id="form" (ngSubmit)="login()" #loginForm="ngForm">
+                <!-- usuario -->
+                <div class="form-group  mb-3 ">
+                    <input type="text" class="form-control" placeholder="Usuário" [(ngModel)]="usuario" name="usuario" [(ngModel)]="usuario" #campoUsuario="ngModel" required>
+                    <app-mensagem *ngIf="campoUsuario.invalid && campoUsuario.touched " mensagem="Usuário obrigatório ⚠">
+                    </app-mensagem>
+                </div>
+                <!-- senha -->
+                <div class="form-group mb-3 ">
+                    <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha" name="senha" [(ngModel)]="senha" #campoSenha="ngModel" required>
+                    <app-mensagem *ngIf="campoSenha.invalid && campoSenha.touched " mensagem="Senha obrigatória ⚠"></app-mensagem>
+                </div>
+                <!-- check -->
+                <div id="check">
+                    <p>Logar automaticamente</p>
+                    <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+                </div>
+                <!-- fim check -->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+                </div>
+            </form>
+            <!-- fim form -->
+        </div>
+    </div>
+</div>

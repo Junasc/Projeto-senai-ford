@@ -1,12 +1,13 @@
-import { AutenticacaoService } from './../../autenticacao/autenticacao.service';
+import { AutenticacaoService } from '../../autenticacao/autenticacao.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-home',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   usuario = '';
   senha = '';
