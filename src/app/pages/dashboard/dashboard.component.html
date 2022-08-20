@@ -9,10 +9,9 @@
         <div class="body">
           <select name="vehicle" id="vehicle">
             <option value="" disabled selected>Selecione</option>
-            <option value="" disabled>Ranger</option>
-            <option value="" disabled>Mustang</option>
-            <option value="" disabled>Territory</option>
-            <option value="" disabled>Bronco Sport</option>
+            <option *ngFor="let vehicle of vehicles" value="{{ vehicle.id }}" disabled>
+              {{ vehicle.vehicle }}
+            </option>
           </select>
         </div>
       </div>
