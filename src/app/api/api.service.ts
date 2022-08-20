@@ -14,4 +14,8 @@ export class ApiService {
     getVehicles():Observable<any> {
         return this.http.get<any> (this.baseUrl + '/vehicle');
     }
+
+    getVehicleDetails(vehicleId: number):Observable<any> {
+        return this.http.get<any> (this.baseUrl + '/vehicledata/' + vehicleId);
+    }
 }

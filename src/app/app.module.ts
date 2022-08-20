@@ -8,10 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from '../app/pages/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent,],
-  imports: [BrowserModule,AppRoutingModule,HttpClientModule, CabecalhoModule, RodapeModule ],
+  imports: [BrowserModule,AppRoutingModule,HttpClientModule, CabecalhoModule, RodapeModule, FormsModule],
   providers: [{provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent]
 })

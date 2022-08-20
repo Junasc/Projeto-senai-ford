@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api/api.service';
-import { vehicle } from 'src/app/api/vehicle';
+import { vehicle, vehicleDetails } from 'src/app/api/vehicle';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +9,9 @@ import { vehicle } from 'src/app/api/vehicle';
 })
 export class DashboardComponent implements OnInit {
   vehicles: vehicle[] = [];
+  selectedVehicleId : number = 0;
+  selectedVehicle : vehicle = {}; 
+  selectedVehicleDetails : vehicleDetails = {};
 
   constructor(private apiService: ApiService) { 
     this.getVehicles();
@@ -19,5 +22,14 @@ export class DashboardComponent implements OnInit {
 
   getVehicles(): void {
     this.apiService.getVehicles().subscribe((vehicles) => (this.vehicles = vehicles.vehicles));
+  }
+
+  getVehicleDetails(vehicleId:number): void {
+    this.apiService.getVehicleDetails(vehicleId).subscribe((vehicle) => (this.selectedVehicleDetails = vehicle));
+  }
+
+  onChange(vehicleId:number){
+    this.selectedVehicle = this.vehicles[vehicleId - 1];
+    this.getVehicleDetails(vehicleId);
   }
 }

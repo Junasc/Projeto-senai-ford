@@ -7,9 +7,9 @@
           <h2>Veículo</h2>
         </div>
         <div class="body">
-          <select name="vehicle" id="vehicle">
+          <select [ngModel]="selectedVehicleId" (ngModelChange)="onChange($event)" name="vehicle" id="vehicle">
             <option value="" disabled selected>Selecione</option>
-            <option *ngFor="let vehicle of vehicles" value="{{ vehicle.id }}" disabled>
+            <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
               {{ vehicle.vehicle }}
             </option>
           </select>
@@ -22,7 +22,7 @@
           <h2>Total de Vendas</h2>
         </div>
         <div class="body">
-          <span class="number">1500</span>
+          <span class="number"> {{selectedVehicle.volumetotal ?? 0  }} </span>
           <span class="unid">Unid.</span>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <h2>Conectados</h2>
         </div>
         <div class="body">
-          <span class="number">500</span>
+          <span class="number"> {{selectedVehicle.connected ?? 0 }} </span>
           <span class="unid">Unid.</span>
         </div>
       </div>
@@ -44,7 +44,7 @@
           <h2>Update de Software</h2>
         </div>
         <div class="body">
-          <span class="number">750</span>
+          <span class="number"> {{selectedVehicle.softwareUpdates ?? 0}} </span>
           <span class="unid">Unid.</span>
         </div>
       </div>
@@ -52,10 +52,10 @@
   </div>
   <div class="row">
     <div class="col">
-      <img src="../../assets/img/mustang.png" alt="Imagem do carro">
+      <img *ngIf="selectedVehicle.vehicle" src="../../assets/img/{{selectedVehicle.vehicle}}.png" alt="Imagem do carro">
     </div>
   </div>
-  <table>
+  <table *ngIf="selectedVehicle.vehicle" >
     <thead>
       <th>Código - Vin</th>
       <th>Odômetro</th>
@@ -66,12 +66,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text"></td>
-        <td>50000 Km</td>
-        <td>90 %</td>
-        <td>on</td>
-        <td>-12,1111</td>
-        <td>-12,1111</td>
+        <td><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></td>
+        <td> {{selectedVehicleDetails.odometer ?? '' }} Km</td>
+        <td> {{selectedVehicleDetails.fuelLevel ?? '' }} %</td>
+        <td> {{selectedVehicleDetails.status ?? '' }} </td>
+        <td> {{selectedVehicleDetails.lat ?? '' }}</td>
+        <td> {{selectedVehicleDetails.long ?? '' }} </td>
       </tr>
       <tr class="table-bottom"></tr>
     </tbody>
