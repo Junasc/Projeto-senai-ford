@@ -1,3 +1,4 @@
+import { UsuarioService } from './autenticacao/usuario/usuario.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'projetoFord';
-  constructor(public router: Router ) {
 
+  constructor(public router: Router, authService:UsuarioService ) {
+    if (!authService.estaLogado()) {
+      router.navigate(['login']);
+    }
   }
 }
