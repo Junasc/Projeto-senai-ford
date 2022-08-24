@@ -8,7 +8,7 @@
                 </div>
                 <div class="body">
                     <select [ngModel]="selectedVehicleId" (ngModelChange)="onChange($event)" name="vehicle" id="vehicle">
-            <option value="" disabled selected>Selecione</option>
+            <option disabled selected >Selecione um veículo </option>
             <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
               {{ vehicle.vehicle }}
             </option>
@@ -56,25 +56,7 @@
         </div>
     </div>
 
-    <div class="table">
-        <div class="row th">
-            <div class="col th">Código - Vin</div>
-            <div class="col th">Odômetro</div>
-            <div class="col th">Nível de Combustível</div>
-            <div class="col th">Status</div>
-            <div class="col th">Lat.</div>
-            <div class="col th">Long.</div>
-        </div>
-        <div class="row tr">
-            <div class="col td"><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></div>
-            <div class="col td">{{selectedVehicleDetails.odometer ?? '' }} Km</div>
-            <div class="col td">{{selectedVehicleDetails.fuelLevel ?? '' }} %</div>
-            <div class="col td">{{selectedVehicleDetails.status ?? '' }}</div>
-            <div class="col td">{{selectedVehicleDetails.lat ?? '' }}</div>
-            <div class="col td">{{selectedVehicleDetails.long ?? '' }}</div>
-        </div>
-    </div>
-
+    <!-- tabela de baixo -->
     <table *ngIf="selectedVehicle.vehicle">
         <thead>
             <th>Código - Vin</th>
@@ -93,7 +75,14 @@
                 <td> {{selectedVehicleDetails.lat ?? '' }}</td>
                 <td> {{selectedVehicleDetails.long ?? '' }} </td>
             </tr>
-            <tr class="table-bottom"></tr>
         </tbody>
+        <tfoot>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tfoot>
     </table>
 </div>
