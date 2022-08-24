@@ -1,79 +1,99 @@
 <div class="content">
-  <h1>Dashboard FORD</h1>
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="head">
-          <h2>Veículo</h2>
-        </div>
-        <div class="body">
-          <select [ngModel]="selectedVehicleId" (ngModelChange)="onChange($event)" name="vehicle" id="vehicle">
+    <h1>Dashboard FORD</h1>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="head">
+                    <h2>Veículo</h2>
+                </div>
+                <div class="body">
+                    <select [ngModel]="selectedVehicleId" (ngModelChange)="onChange($event)" name="vehicle" id="vehicle">
             <option value="" disabled selected>Selecione</option>
             <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
               {{ vehicle.vehicle }}
             </option>
           </select>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="col">
+            <div class="card">
+                <div class="head">
+                    <h2>Total de Vendas</h2>
+                </div>
+                <div class="body">
+                    <span class="number"> {{selectedVehicle.volumetotal ?? 0  }} </span>
+                    <span class="unid">Unid.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="head">
+                    <h2>Conectados</h2>
+                </div>
+                <div class="body">
+                    <span class="number"> {{selectedVehicle.connected ?? 0 }} </span>
+                    <span class="unid">Unid.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="head">
+                    <h2>Update de Software</h2>
+                </div>
+                <div class="body">
+                    <span class="number"> {{selectedVehicle.softwareUpdates ?? 0}} </span>
+                    <span class="unid">Unid.</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col">
-      <div class="card">
-        <div class="head">
-          <h2>Total de Vendas</h2>
+    <div class="row">
+        <div class="col">
+            <img *ngIf="selectedVehicle.vehicle" src="../../assets/img/{{selectedVehicle.vehicle}}.png" alt="Imagem do carro">
         </div>
-        <div class="body">
-          <span class="number"> {{selectedVehicle.volumetotal ?? 0  }} </span>
-          <span class="unid">Unid.</span>
-        </div>
-      </div>
     </div>
-    <div class="col">
-      <div class="card">
-        <div class="head">
-          <h2>Conectados</h2>
+
+    <div class="table">
+        <div class="row th">
+            <div class="col th">Código - Vin</div>
+            <div class="col th">Odômetro</div>
+            <div class="col th">Nível de Combustível</div>
+            <div class="col th">Status</div>
+            <div class="col th">Lat.</div>
+            <div class="col th">Long.</div>
         </div>
-        <div class="body">
-          <span class="number"> {{selectedVehicle.connected ?? 0 }} </span>
-          <span class="unid">Unid.</span>
+        <div class="row tr">
+            <div class="col td"><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></div>
+            <div class="col td">{{selectedVehicleDetails.odometer ?? '' }} Km</div>
+            <div class="col td">{{selectedVehicleDetails.fuelLevel ?? '' }} %</div>
+            <div class="col td">{{selectedVehicleDetails.status ?? '' }}</div>
+            <div class="col td">{{selectedVehicleDetails.lat ?? '' }}</div>
+            <div class="col td">{{selectedVehicleDetails.long ?? '' }}</div>
         </div>
-      </div>
     </div>
-    <div class="col">
-      <div class="card">
-        <div class="head">
-          <h2>Update de Software</h2>
-        </div>
-        <div class="body">
-          <span class="number"> {{selectedVehicle.softwareUpdates ?? 0}} </span>
-          <span class="unid">Unid.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <img *ngIf="selectedVehicle.vehicle" src="../../assets/img/{{selectedVehicle.vehicle}}.png" alt="Imagem do carro">
-    </div>
-  </div>
-  <table *ngIf="selectedVehicle.vehicle" >
-    <thead>
-      <th>Código - Vin</th>
-      <th>Odômetro</th>
-      <th>Nível de Combustível</th>
-      <th>Status</th>
-      <th>Lat.</th>
-      <th>Long.</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></td>
-        <td> {{selectedVehicleDetails.odometer ?? '' }} Km</td>
-        <td> {{selectedVehicleDetails.fuelLevel ?? '' }} %</td>
-        <td> {{selectedVehicleDetails.status ?? '' }} </td>
-        <td> {{selectedVehicleDetails.lat ?? '' }}</td>
-        <td> {{selectedVehicleDetails.long ?? '' }} </td>
-      </tr>
-      <tr class="table-bottom"></tr>
-    </tbody>
-  </table>
+
+    <table *ngIf="selectedVehicle.vehicle">
+        <thead>
+            <th>Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></td>
+                <td> {{selectedVehicleDetails.odometer ?? '' }} Km</td>
+                <td> {{selectedVehicleDetails.fuelLevel ?? '' }} %</td>
+                <td> {{selectedVehicleDetails.status ?? '' }} </td>
+                <td> {{selectedVehicleDetails.lat ?? '' }}</td>
+                <td> {{selectedVehicleDetails.long ?? '' }} </td>
+            </tr>
+            <tr class="table-bottom"></tr>
+        </tbody>
+    </table>
 </div>
