@@ -11,9 +11,10 @@ export class AutenticacaoService {
 
   constructor(private httpClient :HttpClient, private usuarioService: UsuarioService) {}
 
+  //envia usuario e senha pra api e tenta pegar o token se for retornado(login com sucesso)
+  //salva token se for retornado
   autenticar(userName: string, password: string): Observable<HttpResponse<any>>
   {
-    console.log('autenticar')
     return this.httpClient.post(
       'http://localhost:3000/user/login',
       { userName, password },
@@ -21,7 +22,6 @@ export class AutenticacaoService {
     ).pipe(
       tap((res) =>{
         const authToken = res.headers.get('x-access-token') ?? '';
-        console.log('authToken: ' + authToken);
         this.usuarioService.salvaToken(authToken);
       })
     );

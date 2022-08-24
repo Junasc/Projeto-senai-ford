@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../autenticacao/usuario/usuario.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './login.component.html',
@@ -22,11 +21,11 @@ export class LoginComponent implements OnInit {
     if (this.userService.estaLogado()){
       this.router.navigate(['home']);
     }
-
   }
 
   ngOnInit(): void {}
 
+  //manda usuario e senha que foram digitados para função autenticar
   login() {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
       () => {
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         alert('usuário ou senha inválido.');
-        console.log('error 28: ' + error);
       }
     );
   }

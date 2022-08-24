@@ -1,36 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from 'src/app/api/api.service';
 import { vehicle, vehicleDetails } from 'src/app/api/vehicle';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+
+export class DashboardComponent {
   vehicles: vehicle[] = [];
   selectedVehicleId : number = 0;
   selectedVehicle : vehicle = {};
   selectedVehicleDetails : vehicleDetails = {};
 
+  // quando a pagina carrega, inicia a busca pelos carros, ao finalizar atribui na variavel vehicles, usada para renderizar o select
   constructor(private apiService: ApiService) {
-    this.getVehicles();
-  }
-
-  ngOnInit(): void {
-  }
-  getVehicles(): void {
     this.apiService.getVehicles().subscribe((vehicles) => (this.vehicles = vehicles));
   }
 
-  getVehicleDetails(vehicleId:number): void {
-    this.apiService.getVehicleDetails(vehicleId).subscribe((vehicle) => (this.selectedVehicleDetails = vehicle));
-  }
-
+  // quando muda o select busca os detalhes do carro selecionado e atribui na variavel selectedVehicleDetails
   onChange(vehicleId:number){
     this.selectedVehicle = this.vehicles[vehicleId - 1];
-    this.getVehicleDetails(vehicleId);
+    this.apiService.getVehicleDetails(vehicleId).subscribe((vehicle) => (this.selectedVehicleDetails = vehicle));
   }
 }
