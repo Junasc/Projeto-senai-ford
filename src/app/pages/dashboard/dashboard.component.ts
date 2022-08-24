@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
   getVehicles(): void {
-    this.apiService.getVehicles().subscribe((vehicles) => (this.vehicles = vehicles.vehicles));
+    this.apiService.getVehicles().subscribe((vehicles) => (this.vehicles = vehicles));
   }
 
   getVehicleDetails(vehicleId:number): void {

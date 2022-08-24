@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 
 @Injectable ({
     providedIn: 'root'
@@ -12,7 +12,7 @@ export class ApiService {
     constructor (private http:HttpClient) {}
 
     getVehicles():Observable<any> {
-        return this.http.get<any> (this.baseUrl + '/vehicle');
+        return this.http.get<any> (this.baseUrl + '/vehicle').pipe(map(vehicle => vehicle.vehicles)) ;
     }
 
     getVehicleDetails(vehicleId: number):Observable<any> {
