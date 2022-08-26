@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/api/api.service';
-import { vehicle, vehicleDetails } from 'src/app/api/vehicle';
+import { VehicleType, VehicleDetailsType } from 'src/app/api/vehicle';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,12 +9,11 @@ import { vehicle, vehicleDetails } from 'src/app/api/vehicle';
 })
 
 export class DashboardComponent {
-  vehicles: vehicle[] = [];
-  selectedVehicleId : number = 0;
-  selectedVehicle : vehicle = {};
-  vehiclesDetails : any = [];
-  selectedVehicleDetails : vehicleDetails = {};
-
+  vehicles: VehicleType[] = [];
+  selectedVehicleId: number = 0;
+  selectedVehicle: VehicleType = {} as VehicleType;
+  vehiclesDetails: VehicleDetailsType[] = [];
+  selectedVehicleDetails : VehicleDetailsType = {} as VehicleDetailsType;
 
   // quando a pagina carrega, inicia a busca pelos carros, ao finalizar atribui na variavel vehicles, usada para renderizar o select
   constructor(private apiService: ApiService) {
@@ -29,7 +28,7 @@ export class DashboardComponent {
 
   //percorre os carros e verifica se algum tem o codigo vin digitado
   searchByVin(vin:string){
-    this.vehiclesDetails.forEach((vehicleDetail: vehicleDetails) => {
+    this.vehiclesDetails.forEach((vehicleDetail: VehicleDetailsType) => {
       if(vehicleDetail.vin === vin) {
         this.selectedVehicleDetails = vehicleDetail;
       }
