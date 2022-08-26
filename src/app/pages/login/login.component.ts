@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  //manda usuario e senha que foram digitados para função autenticar
+  //manda usuario e senha que foram digitados p função autenticar
   login() {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
       () => {

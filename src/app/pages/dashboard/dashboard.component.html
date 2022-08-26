@@ -51,13 +51,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <img *ngIf="selectedVehicle.vehicle" src="../../assets/img/{{selectedVehicle.vehicle}}.png" alt="Imagem do carro">
-        </div>
+    </div>
+
+    <div class="col">
+        <img *ngIf="selectedVehicle.vehicle" src="../../assets/img/{{selectedVehicle.vehicle}}.png" alt="Imagem do carro">
     </div>
 
     <!-- tabela de baixo -->
-    <table *ngIf="selectedVehicle.vehicle">
+    <table>
         <thead>
             <th>Código - Vin</th>
             <th>Odômetro</th>
@@ -68,7 +69,9 @@
         </thead>
         <tbody>
             <tr>
-                <td><input type="text" value="{{selectedVehicleDetails.vin ?? '' }}"></td>
+                <td>
+                    <input type="text" [ngModel]="selectedVehicleDetails.vin ?? '' " (ngModelChange)="searchByVin($event)" value="{{selectedVehicleDetails.vin ?? '' }}">
+                </td>
                 <td> {{selectedVehicleDetails.odometer ?? '' }} Km</td>
                 <td> {{selectedVehicleDetails.fuelLevel ?? '' }} %</td>
                 <td> {{selectedVehicleDetails.status ?? '' }} </td>

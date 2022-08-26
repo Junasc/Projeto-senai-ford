@@ -12,10 +12,10 @@ export class ApiService {
     constructor (private http:HttpClient) {}
 
     getVehicles():Observable<any> {
-        return this.http.get<any> (this.baseUrl + '/vehicle').pipe(map(vehicle => vehicle.vehicles)) ;
+        return this.http.get<any> (this.baseUrl + '/vehicle').pipe(map(vehicle => vehicle.vehicles));
     }
 
-    getVehicleDetails(vehicleId: number):Observable<any> {
-        return this.http.get<any> (this.baseUrl + '/vehicledata/' + vehicleId);
+    getVehiclesDetails():Observable<any> {
+        return this.http.get<any> (this.baseUrl + '/vehicledata').pipe(map(vehicle => vehicle.vehicleData));
     }
 }
